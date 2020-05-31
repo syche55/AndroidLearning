@@ -2,4 +2,7 @@
     <string name="app_name">NUMAD20Su-SiyuChen</string>
     <string name="about_string">About</string>
     <string name="author_info">Name: Siyu Chen / email: chen.siyu2@husky.neu.edu</string>
+    <string name="assignment_four">Link Collector</string>
+    <string name="assignment_three">Clicky Clicky</string>
+    <string name="linkCollectorInputHint">Enter a link</string>
 </resources>
