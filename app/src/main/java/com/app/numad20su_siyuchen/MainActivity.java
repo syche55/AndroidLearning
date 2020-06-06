@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.view.View;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import android.os.Bundle;
@@ -29,6 +28,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void LinkCollector(View view) {
         Intent intent = new Intent(this, LinkCollector.class);
+        startActivity(intent);
+    }
+
+    public void Locator(View view){
+        Intent intent = new Intent(this, Locator.class);
         startActivity(intent);
     }
 }
