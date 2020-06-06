@@ -11,6 +11,7 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.os.PersistableBundle;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
@@ -19,7 +20,7 @@ import android.widget.TextView;
 public class Locator extends AppCompatActivity {
 
     private Button button;
-    private TextView textView;
+    private TextView locationTextView;
 
     private LocationManager locationManager;
     private LocationListener locationListener;  //listen for location changes
@@ -30,13 +31,18 @@ public class Locator extends AppCompatActivity {
         setContentView(R.layout.activity_locator);
 
         button = findViewById(R.id.buttonLocation);
-        textView = findViewById(R.id.textViewLocation);
+        locationTextView = (TextView) findViewById(R.id.textViewLocation);
 
         locationManager = (LocationManager) getSystemService(LOCATION_SERVICE);
         locationListener = new LocationListener() {
             @Override
             public void onLocationChanged(Location location) {
-                textView.append("\n "+location.getLatitude()+" "+location.getLongitude());
+
+                String latitude = String.valueOf(location.getLatitude());
+                String longitude = String.valueOf(location.getLongitude());
+
+
+                locationTextView.setText("Latitude: "+latitude+"\nLongitude: "+longitude);
             }
 
             @Override
@@ -74,8 +80,6 @@ public class Locator extends AppCompatActivity {
                 Intent intent = new Intent(Locator.this, MainActivity.class);
                 startActivity(intent);
             }
-
-
     }
 
     private void configureButton() {
@@ -90,5 +94,17 @@ public class Locator extends AppCompatActivity {
             }
         });
 
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        outState.putString("location_rotate", locationTextView.getText().toString());
+        super.onSaveInstanceState(outState);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        locationTextView.setText(savedInstanceState.getString("location_rotate"));
     }
 }

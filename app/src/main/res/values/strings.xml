@@ -7,4 +7,5 @@
     <string name="linkCollectorInputHint">Enter a link</string>
     <string name="assignment_five">Locator</string>
     <string name="get_position">Get Position</string>
+    <string name="position">Position:</string>
 </resources>
