@@ -3,6 +3,7 @@ package com.app.numad20su_siyuchen;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -33,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
 
     public void Locator(View view){
         Intent intent = new Intent(this, Locator.class);
+        startActivity(intent);
+    }
+
+    public void Service(View view){
+        Intent intent = new Intent(this, Service.class);
         startActivity(intent);
     }
 }

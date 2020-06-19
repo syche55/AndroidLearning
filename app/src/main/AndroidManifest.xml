@@ -16,6 +16,7 @@
         <activity android:name=".Locator" />
         <activity android:name=".LinkCollector" />
         <activity android:name=".PressButtons" />
+        <activity android:name=".Service" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
