@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -49,7 +50,6 @@ public class Service extends AppCompatActivity {
         usdOutput = (TextView) findViewById(R.id.serviceOutput);
         btn = (Button) findViewById(R.id.buttonConvert);
 
-        Log.d("Second", "Second");
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v){
@@ -61,12 +61,8 @@ public class Service extends AppCompatActivity {
                     Convert task = new Convert();
                     task.execute();
                 }
-
             }
-        }
-
-
-        );
+        });
     }
 
 
@@ -76,9 +72,6 @@ public class Service extends AppCompatActivity {
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
-
-
-
         }
 
         @Override
@@ -97,7 +90,6 @@ public class Service extends AppCompatActivity {
 
                 JSONObject jObject = new JSONObject(resp);
                 String amount = jObject.getJSONObject("rates").getString("USD");
-                Log.d("amount",amount);
 
                 res[0]=amount;
                 return res;
@@ -111,6 +103,7 @@ public class Service extends AppCompatActivity {
             } catch (JSONException e) {
                 e.printStackTrace();
             }
+            res[0]="Error";
             return res;
         }
 
@@ -126,10 +119,15 @@ public class Service extends AppCompatActivity {
         @Override
         protected void onPostExecute(String[] res) {
             super.onPostExecute(res);
-            double output = Double.parseDouble(res[0]);
-            double calculatedOutput = inputValue * output;
-            usdOutput.setText(calculatedOutput+"");
-            btn.setText("Convert");
+
+            if (res[0].equalsIgnoreCase("Error")){
+                usdOutput.setText("Error");
+            } else {
+                double output = Double.parseDouble(res[0]);
+                double calculatedOutput = inputValue * output;
+                usdOutput.setText(calculatedOutput + "");
+                btn.setText("Convert");
+            }
         }
     }
     private String convertStreamToString(InputStream is) {
@@ -138,7 +136,18 @@ public class Service extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString("editText", eurInput.getText().toString());
+        outState.putString("textView", usdOutput.getText().toString());
 
+    }
 
-
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        eurInput.setText(savedInstanceState.getString("editText"));
+        usdOutput.setText(savedInstanceState.getString("textView"));
+    }
 }

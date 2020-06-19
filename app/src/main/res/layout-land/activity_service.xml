@@ -9,13 +9,13 @@
         android:id="@+id/serviceInput"
         android:layout_width="128dp"
         android:layout_height="42dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="36dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="28dp"
         android:layout_marginEnd="40dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintEnd_toStartOf="@+id/eurSign"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/servicePrompt" />
 
@@ -23,8 +23,8 @@
         android:id="@+id/eurSign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="140dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="252dp"
         android:text="EUR"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/servicePrompt" />
@@ -33,13 +33,13 @@
         android:id="@+id/serviceOutput"
         android:layout_width="128dp"
         android:layout_height="42dp"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginStart="110dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="36dp"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintEnd_toStartOf="@+id/usdSign"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.977"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/equalsSign" />
 
@@ -47,12 +47,9 @@
         android:id="@+id/buttonConvert"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="80dp"
-        android:layout_marginTop="28dp"
-        android:layout_marginEnd="13dp"
+        android:layout_marginStart="292dp"
+        android:layout_marginTop="32dp"
         android:text="Convert"
-        app:layout_constraintEnd_toStartOf="@+id/equalsSign"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/serviceInput" />
 
@@ -60,8 +57,8 @@
         android:id="@+id/usdSign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="48dp"
-        android:layout_marginEnd="140dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="252dp"
         android:text="USD"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/equalsSign" />
@@ -80,10 +77,13 @@
         android:id="@+id/equalsSign"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:layout_marginEnd="36dp"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="48dp"
+        android:layout_marginEnd="120dp"
         android:text="today can be converted to"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.901"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/serviceInput" />
 
 
